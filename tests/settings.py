@@ -88,6 +88,13 @@ elif os.environ.get("DJANGO_DATABASE_ENGINE") == "mysql":
     DATABASES = {
         "default": {"ENGINE": "django.db.backends.mysql", "NAME": "debug_toolbar"}
     }
+elif os.environ.get("DJANGO_DATABASE_ENGINE") == "pymysql":
+    import pymysql
+
+    pymysql.install_as_MySQLdb()
+    DATABASES = {
+        "default": {"ENGINE": "django.db.backends.mysql", "NAME": "debug_toolbar"}
+    }
 else:
     DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3"}}
 
